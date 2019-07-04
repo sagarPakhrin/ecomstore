@@ -12,7 +12,7 @@ class Category(models.Model):
     meta_keywords = models.CharField("Comma separeted words for SEO ", max_length=255,)
     meta_description = models.CharField("Meta description",max_length=255, help_text='Content for description meta tab')
     created_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
     class Meta:
