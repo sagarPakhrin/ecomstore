@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import json
+
+with open("/etc/djconfigfiles/ecomstore.json") as keys:
+    secret = json.load(keys)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +25,8 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'catalog/templates/catalog/')
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@+uz33y^^qovkqcr^i1uyr#*%oans_tichjk)=83c0^bf0f7)q'
+# SECRET_KEY = '@+uz33y^^qovkqcr^i1uyr#*%oans_tichjk)=83c0^bf0f7)q'
+SECRET_KEY = secret['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'catalog.apps.CatalogConfig',
+    'utils.apps.UtilsConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,"static")
+
+SITE_NAME = "Modern Musician"
+META_KEYWORDS = "Music, instruments, music accessories, musician supplies"
+META_DESCRIPTION= 'Modern Musician is an online supplier or instruments, sheet music, and other accessories for musicians'
