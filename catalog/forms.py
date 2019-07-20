@@ -7,8 +7,6 @@ class ProductAdminForm(forms.ModelForm):
         model = Product
         exclude = ('created_at','updated','is_active','is_bestseller','is_featured')
 
-
-
     def clean_price(self):
         if self.cleaned_data['price'] <=0:
             raise forms.ValidationError('Price musy be greater than zero.')

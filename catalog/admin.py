@@ -13,7 +13,6 @@ class CategoryAdmin(admin.ModelAdmin):
     ordering = ['name']
     search_fields = ['name','description','meta_keywords','meta_description']
     exclude = ('created_at','updated_at')
-
     prepopulated_fields = {'slug':('name',)}
 
 @admin.register(Product)
